@@ -1,0 +1,76 @@
+<resources>
+    <!-- Main menu activity UI placement and dimensions. -->
+    <dimen name="main_menu_first_button_top_margin">20dp</dimen>
+    <dimen name="main_menu_buttons_margin_between_buttons">16dp</dimen>
+    <dimen name="main_menu_buttons_width">400dp</dimen>
+    <dimen name="main_menu_buttons_height">40dp</dimen>
+    <dimen name="main_menu_buttons_text_size">25dp</dimen>
+
+    <!-- Map activity UI placement and dimensions. -->
+    <dimen name="map_ui_background_width">630dp</dimen>
+    <dimen name="map_ui_background_height">335dp</dimen>
+    <dimen name="map_ui_background_top_margin">5dp</dimen>
+    <dimen name="map_ui_background_left_margin">15dp</dimen>
+    <dimen name="map_next_turn_width">200dp</dimen>
+    <dimen name="map_next_turn_height">30dp</dimen>
+    <!-- Region 1 -->
+    <dimen name="map_region_top_margin_1">245dp</dimen>
+    <dimen name="map_region_left_margin_1">235dp</dimen>
+    <dimen name="map_region_width_1">55dp</dimen>
+    <dimen name="map_region_height_1">42dp</dimen>
+    <!-- Region 2 -->
+    <dimen name="map_region_top_margin_2">157dp</dimen>
+    <dimen name="map_region_left_margin_2">121dp</dimen>
+    <dimen name="map_region_width_2">178dp</dimen>
+    <dimen name="map_region_height_2">132dp</dimen>
+    <!-- Region 3 -->
+    <dimen name="map_region_top_margin_3">55dp</dimen>
+    <dimen name="map_region_left_margin_3">185.5dp</dimen>
+    <dimen name="map_region_width_3">93dp</dimen>
+    <dimen name="map_region_height_3">133dp</dimen>
+    <!-- Region 4 -->
+    <dimen name="map_region_top_margin_4">148dp</dimen>
+    <dimen name="map_region_left_margin_4">149dp</dimen>
+    <dimen name="map_region_width_4">52dp</dimen>
+    <dimen name="map_region_height_4">50dp</dimen>
+    <!-- Region 5 -->
+    <dimen name="map_region_top_margin_5">84dp</dimen>
+    <dimen name="map_region_left_margin_5">109dp</dimen>
+    <dimen name="map_region_width_5">74dp</dimen>
+    <dimen name="map_region_height_5">76dp</dimen>
+    <!-- Region 6 -->
+    <dimen name="map_region_top_margin_6">3.0dp</dimen>
+    <dimen name="map_region_left_margin_6">108dp</dimen>
+    <dimen name="map_region_width_6">140dp</dimen>
+    <dimen name="map_region_height_6">150dp</dimen>
+    <!-- Text Info -->
+    <dimen name="map_text_layout_width">290dp</dimen>
+    <dimen name="map_text_layout_left_margin">350dp</dimen>
+    <dimen name="map_country_name_text_size">30dp</dimen>
+    <dimen name="map_country_name_left_margin">75dp</dimen>
+    <dimen name="map_country_name_top_margin">45dp</dimen>
+    <dimen name="map_first_text_label_top_margin">25dp</dimen>
+    <dimen name="map_text_labels_left_margin">50dp</dimen>
+    <dimen name="map_text_values_left_margin">60dp</dimen>
+    <dimen name="map_text_labels_top_margin">20dp</dimen>
+    <dimen name="map_text_icons_left_margin">5dp</dimen>
+    <dimen name="map_skills_width">200dp</dimen>
+
+    <!-- Combat activity UI placement and dimensions. -->
+    <dimen name="combat_first_row_buttons_top_margin">10dp</dimen>
+    <dimen name="combat_main_main_menu_button_left_margin">10dp</dimen>
+    <dimen name="combat_sub_main_menu_buttons_top_margin">3dp</dimen>
+    <dimen name="combat_unit_buttons_left_margin">10dp</dimen>
+    <dimen name="combat_main_spells_button_right_margin">10dp</dimen>
+    <dimen name="combat_sub_spells_buttons_top_margin">4dp</dimen>
+
+    <dimen name="combat_background_backmountains_height">300dp</dimen>
+    <dimen name="combat_background_frontmountains_height">240dp</dimen>
+    <dimen name="combat_background_grass_height">100dp</dimen>
+    <dimen name="combat_units_height">170dp</dimen>
+    <dimen name="combat_background_clouds_height">70dp</dimen>
+    <dimen name="combat_background_clouds_1_top_margin">10dp</dimen>
+    <dimen name="combat_background_clouds_2_top_margin">55dp</dimen>
+    <dimen name="combat_background_clouds_3_top_margin">100dp</dimen>
+
+</resources>

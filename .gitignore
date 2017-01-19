@@ -1,0 +1,15 @@
+*.iml
+.gradle
+.idea
+app/proguard-rules.pro
+local.properties
+.idea/workspace.xml
+.idea/libraries
+.DS_Store
+build
+captures
+.externalNativeBuild
+res/drawable
+*.wav
+*.png
+*.jpg

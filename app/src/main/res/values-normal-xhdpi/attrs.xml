@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Combat activity -->
+    <integer name="background_backmountains_top_margin_percent">48</integer>
+    <integer name="background_frontmountains_top_margin_percent">58</integer>
+    <integer name="background_grass_top_margin_percent">77</integer>
+    <integer name="background_clouds_1_top_margin_percent">40</integer>
+    <integer name="background_clouds_2_top_margin_percent">25</integer>
+    <integer name="background_clouds_3_top_margin_percent">7</integer>
+</resources>

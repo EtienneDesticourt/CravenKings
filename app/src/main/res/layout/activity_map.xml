@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="presenter" type="etiennedesticourt.cravenkings.Map.CountryManager"/>
+    </data>
+
+    <FrameLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".MainMenu.MainActivity"
+        android:background="@drawable/map_background"
+        android:id="@+id/mapBackgroundLayout">
+
+        <ImageView
+            android:layout_width="@dimen/map_ui_background_width"
+            android:layout_height="@dimen/map_ui_background_height"
+            android:id="@+id/imageView"
+            android:background="@drawable/map_ui_background"
+            android:layout_marginLeft="@dimen/map_ui_background_left_margin"
+            android:layout_marginTop="@dimen/map_ui_background_top_margin" />
+
+        <etiennedesticourt.cravenkings.Widgets.TransparentImageButton
+            android:layout_width="@dimen/map_region_width_1"
+            android:layout_height="@dimen/map_region_height_1"
+            android:id="@+id/regionView1"
+            android:background="@{presenter.getCountry(0).isFriendly() ? @drawable/region1_friend : (presenter.isSelected(0) ? @drawable/region1_attack : @drawable/region1_enemy)}"
+            android:tag="0"
+            android:layout_marginLeft="@dimen/map_region_left_margin_1"
+            android:layout_marginTop="@dimen/map_region_top_margin_1"
+            android:clickable="false"
+            android:onClick="onClickCountry" />
+
+        <etiennedesticourt.cravenkings.Widgets.TransparentImageButton
+            android:layout_width="@dimen/map_region_width_2"
+            android:layout_height="@dimen/map_region_height_2"
+            android:id="@+id/regionView2"
+            android:background="@{presenter.getCountry(1).isFriendly() ? @drawable/region2_friend : (presenter.isSelected(1) ? @drawable/region2_attack : @drawable/region2_enemy)}"
+            android:tag="1"
+            android:layout_marginLeft="@dimen/map_region_left_margin_2"
+            android:layout_marginTop="@dimen/map_region_top_margin_2"
+            android:onClick="onClickCountry" />
+
+        <etiennedesticourt.cravenkings.Widgets.TransparentImageButton
+            android:layout_width="@dimen/map_region_width_4"
+            android:layout_height="@dimen/map_region_height_4"
+            android:id="@+id/regionView4"
+            android:background="@{presenter.getCountry(3).isFriendly() ? @drawable/region4_friend : (presenter.isSelected(3) ? @drawable/region4_attack : @drawable/region4_enemy)}"
+            android:tag="3"
+            android:layout_marginLeft="@dimen/map_region_left_margin_4"
+            android:layout_marginTop="@dimen/map_region_top_margin_4"
+            android:onClick="onClickCountry" />
+
+        <etiennedesticourt.cravenkings.Widgets.TransparentImageButton
+            android:layout_width="@dimen/map_region_width_3"
+            android:layout_height="@dimen/map_region_height_3"
+            android:id="@+id/regionView3"
+            android:background="@{presenter.getCountry(2).isFriendly() ? @drawable/region3_friend : (presenter.isSelected(2) ? @drawable/region3_attack : @drawable/region3_enemy)}"
+            android:tag="2"
+            android:layout_marginLeft="@dimen/map_region_left_margin_3"
+            android:layout_marginTop="@dimen/map_region_top_margin_3"
+            android:onClick="onClickCountry" />
+
+        <etiennedesticourt.cravenkings.Widgets.TransparentImageButton
+            android:layout_width="@dimen/map_region_width_6"
+            android:layout_height="@dimen/map_region_height_6"
+            android:id="@+id/regionView6"
+            android:background="@{presenter.getCountry(5).isFriendly() ? @drawable/region6_friend : (presenter.isSelected(5) ? @drawable/region6_attack : @drawable/region6_enemy)}"
+            android:tag="5"
+            android:layout_marginLeft="@dimen/map_region_left_margin_6"
+            android:layout_marginTop="@dimen/map_region_top_margin_6"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:onClick="onClickCountry" />
+
+        <etiennedesticourt.cravenkings.Widgets.TransparentImageButton
+            android:layout_width="@dimen/map_region_width_5"
+            android:layout_height="@dimen/map_region_height_5"
+            android:id="@+id/regionView5"
+            android:background="@{presenter.getCountry(4).isFriendly() ? @drawable/region5_friend : (presenter.isSelected(4) ? @drawable/region5_attack : @drawable/region5_enemy)}"
+            android:tag="4"
+            android:layout_marginLeft="@dimen/map_region_left_margin_5"
+            android:layout_marginTop="@dimen/map_region_top_margin_5"
+            android:onClick="onClickCountry" />
+
+        <Button
+            android:layout_width="@dimen/map_next_turn_width"
+            android:layout_height="@dimen/map_next_turn_height"
+            android:text="@string/map_next_turn_label"
+            android:id="@+id/nextTurnButton"
+            android:textColor="@color/colorMainMenuButtonText"
+            android:background="@drawable/main_menu_button_shape"
+            android:layout_gravity="bottom|right"
+            android:onClick="onClickNextTurn" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/map_text_layout_width"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/map_text_layout_left_margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{presenter.selectedCountry.name}"
+                android:id="@+id/countryNameText"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_marginTop="@dimen/map_country_name_top_margin"
+                android:layout_marginLeft="@dimen/map_country_name_left_margin"
+                android:textStyle="bold"
+                android:textSize="@dimen/map_country_name_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/map_troups_label"
+                android:id="@+id/troupsLabelText"
+                android:layout_below="@+id/countryNameText"
+                android:layout_marginTop="@dimen/map_first_text_label_top_margin"
+                android:layout_marginLeft="@dimen/map_text_labels_left_margin"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/map_income_label"
+                android:id="@+id/incomeLabelText"
+                android:layout_below="@+id/troupsLabelText"
+                android:layout_alignStart="@+id/troupsLabelText"
+                android:layout_marginTop="@dimen/map_text_labels_top_margin"
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="@dimen/map_skills_width"
+                android:layout_height="@dimen/map_skills_height"
+                android:text="@string/map_skills_label"
+                android:id="@+id/skillsButton"
+                android:layout_alignStart="@+id/incomeLabelText"
+                android:layout_below="@+id/incomeLabelText"
+                android:layout_marginTop="@dimen/map_text_labels_top_margin"
+                android:onClick="onClickSkills"
+                android:background="@drawable/main_menu_button_shape"
+                android:textColor="@color/colorMainMenuButtonText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(presenter.selectedCountry.troops)}"
+                android:id="@+id/troupsValueText"
+                android:layout_alignTop="@+id/troupsLabelText"
+                android:layout_toEndOf="@+id/troupsLabelText"
+                android:layout_marginLeft="@dimen/map_text_values_left_margin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(presenter.selectedCountry.income)}"
+                android:id="@+id/incomeValueText"
+                android:layout_alignTop="@+id/incomeLabelText"
+                android:layout_alignStart="@id/troupsValueText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/map_total_income_label"
+                android:id="@+id/totalIncomeLabelText"
+                android:layout_below="@+id/skillsButton"
+                android:layout_alignStart="@+id/skillsButton"
+                android:layout_marginTop="@dimen/map_text_labels_top_margin"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/map_total_money_label"
+                android:id="@+id/totalMoneyLabelText"
+                android:layout_below="@+id/totalIncomeLabelText"
+                android:layout_alignStart="@+id/totalIncomeLabelText"
+                android:layout_marginTop="@dimen/map_text_labels_top_margin"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(presenter.totalIncome)}"
+                android:id="@+id/totalIncomeValueText"
+                android:layout_alignTop="@+id/totalIncomeLabelText"
+                android:layout_alignStart="@id/troupsValueText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(presenter.totalMoney)}"
+                android:id="@+id/totalMoneyValueText"
+                android:layout_alignTop="@+id/totalMoneyLabelText"
+                android:layout_alignStart="@id/troupsValueText" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_alignTop="@+id/totalMoneyValueText"
+                android:layout_toEndOf="@+id/totalMoneyValueText"
+                android:layout_alignBottom="@+id/totalMoneyValueText"
+                android:cropToPadding="false"
+                android:baselineAlignBottom="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coin"
+                android:scaleType="fitStart"
+                android:layout_marginLeft="@dimen/map_text_icons_left_margin" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:cropToPadding="false"
+                android:baselineAlignBottom="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coin"
+                android:scaleType="fitStart"
+                android:layout_alignTop="@+id/totalIncomeValueText"
+                android:layout_toEndOf="@+id/totalIncomeValueText"
+                android:layout_alignBottom="@+id/totalIncomeValueText"
+                android:layout_marginLeft="@dimen/map_text_icons_left_margin" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView4"
+                android:cropToPadding="false"
+                android:baselineAlignBottom="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/coin"
+                android:scaleType="fitStart"
+                android:layout_alignTop="@+id/incomeValueText"
+                android:layout_toEndOf="@+id/incomeValueText"
+                android:layout_alignBottom="@+id/incomeValueText"
+                android:layout_marginLeft="@dimen/map_text_icons_left_margin" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView5"
+                android:cropToPadding="false"
+                android:baselineAlignBottom="false"
+                android:adjustViewBounds="true"
+                android:src="@drawable/combat_knights"
+                android:scaleType="fitStart"
+                android:layout_alignTop="@+id/troupsValueText"
+                android:layout_toEndOf="@+id/troupsValueText"
+                android:layout_alignBottom="@+id/troupsValueText"
+                android:layout_marginLeft="@dimen/map_text_icons_left_margin" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+</layout>

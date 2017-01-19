@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Craven Kings</string>
+    <string name="title_activity_story">StoryActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="save_file_name">savefile.data</string>
+
+    <!-- Map activity strings -->
+    <string name="map_troups_label">Troops:</string>
+    <string name="map_income_label">Income:</string>
+    <string name="map_total_income_label">Total income:</string>
+    <string name="map_total_money_label">Funds:</string>
+    <string name="map_skills_label">Skills</string>
+    <string name="map_next_turn_label">Next Turn</string>
+
+    <!-- Country names -->
+    <string name="map_country_name_1">Country 1</string>
+    <string name="map_country_name_2">Country 2</string>
+    <string name="map_country_name_3">Country 3</string>
+    <string name="map_country_name_4">Country 4</string>
+    <string name="map_country_name_5">Country 5</string>
+    <string name="map_country_name_6">Country 6</string>
+    <!-- Country allegiances -->
+    <string name="map_country_allegiance_1">PLAYER</string>
+    <string name="map_country_allegiance_2">COMPUTER</string>
+    <string name="map_country_allegiance_3">COMPUTER</string>
+    <string name="map_country_allegiance_4">COMPUTER</string>
+    <string name="map_country_allegiance_5">COMPUTER</string>
+    <string name="map_country_allegiance_6">COMPUTER</string>
+</resources>

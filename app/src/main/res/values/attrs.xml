@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TransparentImageButton"></declare-styleable>
+    <!-- Country activity -->
+    <integer name="num_countries">6</integer>
+    <array name="country_names_array">
+        <item>@string/map_country_name_1</item>
+        <item>@string/map_country_name_2</item>
+        <item>@string/map_country_name_3</item>
+        <item>@string/map_country_name_4</item>
+        <item>@string/map_country_name_5</item>
+        <item>@string/map_country_name_6</item>
+    </array>
+    <array name="country_max_troops_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </array>
+    <array name="country_income_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </array>
+    <array name="country_allegiances_array">
+        <item>@string/map_country_allegiance_1</item>
+        <item>@string/map_country_allegiance_2</item>
+        <item>@string/map_country_allegiance_3</item>
+        <item>@string/map_country_allegiance_4</item>
+        <item>@string/map_country_allegiance_5</item>
+        <item>@string/map_country_allegiance_6</item>
+    </array>
+    <array name="country_button_id_array">
+        <item>@id/regionView1</item>
+        <item>@id/regionView2</item>
+        <item>@id/regionView3</item>
+        <item>@id/regionView4</item>
+        <item>@id/regionView5</item>
+        <item>@id/regionView6</item>
+    </array>
+    <array name="combat_assets">
+        <item>@drawable/knight_walk_frames</item>
+    </array>
+
+    <!-- Combat activity -->
+    <integer name="background_backmountains_top_margin_percent">48</integer>
+    <integer name="background_frontmountains_top_margin_percent">58</integer>
+    <integer name="background_grass_top_margin_percent">77</integer>
+    <integer name="background_clouds_1_top_margin_percent">40</integer>
+    <integer name="background_clouds_2_top_margin_percent">25</integer>
+    <integer name="background_clouds_3_top_margin_percent">7</integer>
+
+    <integer name="background_backmountains_offset">0</integer>
+    <integer name="background_frontmountains_offset">0</integer>
+    <integer name="background_grass_offset">0</integer>
+    <integer name="background_clouds_1_offset">0</integer>
+    <integer name="background_clouds_2_offset">100</integer>
+    <integer name="background_clouds_3_offset">230</integer>
+
+    <integer name="background_backmountains_distance">8</integer>
+    <integer name="background_frontmountains_distance">4</integer>
+    <integer name="background_grass_distance">1</integer>
+    <integer name="background_clouds_1_distance">50</integer>
+    <integer name="background_clouds_2_distance">30</integer>
+    <integer name="background_clouds_3_distance">15</integer>
+
+    <integer name="friendly_spawn_x_pos">50</integer>
+    <integer name="enemy_spawn_x_pos">500</integer>
+
+    <declare-styleable name="BackgroundView">
+        <attr name="offset" format="integer" />
+        <attr name="distance" format="integer" />
+    </declare-styleable>
+
+</resources>

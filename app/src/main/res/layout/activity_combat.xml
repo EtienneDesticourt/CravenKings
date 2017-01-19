@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Combat.CombatActivity"
+    android:background="@color/colorCombatSky">
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.BackgroundView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/combat_background_clouds_height"
+        android:id="@+id/background_clouds_1"
+        android:src="@drawable/background_clouds"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/combat_background_clouds_1_top_margin"
+        custom:offset="@integer/background_clouds_1_offset"
+        custom:distance="@integer/background_clouds_1_distance"/>
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.BackgroundView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/combat_background_clouds_height"
+        android:id="@+id/background_clouds_2"
+        android:src="@drawable/background_clouds"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/combat_background_clouds_2_top_margin"
+        custom:offset="@integer/background_clouds_2_offset"
+        custom:distance="@integer/background_clouds_2_distance" />
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.BackgroundView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/combat_background_clouds_height"
+        android:id="@+id/background_clouds_3"
+        android:src="@drawable/background_clouds"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/combat_background_clouds_3_top_margin"
+        custom:offset="@integer/background_clouds_3_offset"
+        custom:distance="@integer/background_clouds_3_distance" />
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.BackgroundView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/combat_background_backmountains_height"
+        android:id="@+id/background_backmountains"
+        android:src="@drawable/background_backmountains"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/combat_background_backmountains_bottom_margin"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentRight="false"
+        custom:offset="@integer/background_backmountains_offset"
+        custom:distance="@integer/background_backmountains_distance" />
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.BackgroundView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/combat_background_frontmountains_height"
+        android:id="@+id/background_frontmountains"
+        android:src="@drawable/background_frontmountains"
+        android:scaleType="centerCrop"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/combat_background_frontmountains_bottom_margin"
+        custom:offset="@integer/background_frontmountains_offset"
+        custom:distance="@integer/background_frontmountains_distance" />
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.BackgroundView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/combat_background_grass_height"
+        android:id="@+id/background_grass"
+        android:src="@drawable/background_grass"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        custom:offset="@integer/background_grass_offset"
+        custom:distance="@integer/background_grass_distance" />
+
+    <etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.CombatView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/combatView" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainMenuButton"
+        android:background="@drawable/menu_mainmenu"
+        android:layout_marginLeft="@dimen/combat_main_main_menu_button_left_margin"
+        android:layout_marginTop="@dimen/combat_first_row_buttons_top_margin" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spellsButton"
+        android:background="@drawable/spells_spells"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/combat_main_spells_button_right_margin"
+        android:layout_marginTop="@dimen/combat_first_row_buttons_top_margin" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainMenuButton"
+        android:layout_alignParentStart="false"
+        android:layout_alignStart="@id/mainMenuButton"
+        android:visibility="gone">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mapButton"
+            android:background="@drawable/menu_map"
+            android:layout_toEndOf="@id/mapButton"
+            android:layout_marginTop="@dimen/combat_sub_main_menu_buttons_top_margin" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/optionsButton"
+            android:background="@drawable/menu_options"
+            android:layout_below="@+id/mapButton"
+            android:layout_marginTop="@dimen/combat_sub_main_menu_buttons_top_margin" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/quitButton"
+            android:background="@drawable/menu_quit"
+            android:layout_below="@+id/optionsButton"
+            android:layout_marginTop="@dimen/combat_sub_main_menu_buttons_top_margin" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spellsButton"
+        android:layout_alignParentEnd="false"
+        android:layout_alignStart="@id/spellsButton"
+        android:visibility="gone">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fireButton"
+            android:background="@drawable/spells_fire"
+            android:layout_marginTop="@dimen/combat_sub_spells_buttons_top_margin" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lightButton"
+            android:background="@drawable/spells_light"
+            android:layout_below="@+id/fireButton"
+            android:layout_marginTop="@dimen/combat_sub_spells_buttons_top_margin" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/starButton"
+            android:background="@drawable/spells_stars"
+            android:layout_below="@+id/lightButton"
+            android:layout_marginTop="@dimen/combat_sub_spells_buttons_top_margin" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/mainMenuButton"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/relativeLayout">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/knightButton"
+            android:background="@drawable/combat_knights"
+            android:layout_marginLeft="@dimen/combat_unit_buttons_left_margin"
+            android:onClick="spawnKnight" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/archerButton"
+            android:background="@drawable/combat_archer"
+            android:layout_alignBottom="@+id/knightButton"
+            android:layout_toEndOf="@+id/knightButton"
+            android:layout_marginLeft="@dimen/combat_unit_buttons_left_margin"
+            android:onClick="spawnArcher" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mageButton"
+            android:background="@drawable/combat_mage"
+            android:layout_alignTop="@+id/archerButton"
+            android:layout_toEndOf="@+id/archerButton"
+            android:layout_marginLeft="@dimen/combat_unit_buttons_left_margin"
+            android:onClick="spawnMage" />
+    </RelativeLayout>
+
+</RelativeLayout>
