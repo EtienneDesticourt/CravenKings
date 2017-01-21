@@ -3,10 +3,12 @@ package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -30,20 +32,22 @@ public enum AssetHandler {
     }
 
     public void loadAllAssets(Context context){
-        loadAsset(context, R.drawable.knight_walk_frames);
-        loadAsset(context, R.drawable.knight_attack_frames);
-        loadAsset(context, R.drawable.knight_death_frames);
-        loadAsset(context, R.drawable.archer_walk_frames);
-        loadAsset(context, R.drawable.archer_attack_frames);
-        loadAsset(context, R.drawable.archer_death_frames);
-        loadAsset(context, R.drawable.mage_walk_frames);
-        loadAsset(context, R.drawable.mage_attack_frames);
-        loadAsset(context, R.drawable.mage_death_frames);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        //options.inSampleSize = 2;
+
+        loadAsset(context, R.drawable.knight_walk_frames, options);
+        loadAsset(context, R.drawable.knight_attack_frames, options);
+        loadAsset(context, R.drawable.knight_death_frames, options);
+        loadAsset(context, R.drawable.archer_walk_frames, options);
+        loadAsset(context, R.drawable.archer_attack_frames, options);
+        loadAsset(context, R.drawable.archer_death_frames, options);
+        loadAsset(context, R.drawable.mage_walk_frames, options);
+        loadAsset(context, R.drawable.mage_attack_frames, options);
+        loadAsset(context, R.drawable.mage_death_frames, options);
     }
 
-    public void loadAsset(Context context, int id){
-        BitmapDrawable drawable = (BitmapDrawable) context.getResources().getDrawable(id);
-        Bitmap bitmap =  drawable.getBitmap();
+    public void loadAsset(Context context, int id, BitmapFactory.Options options){
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id, options);
         bitmaps.put(id, bitmap);
     }
 

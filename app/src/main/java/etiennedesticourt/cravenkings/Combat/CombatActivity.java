@@ -26,8 +26,6 @@ import etiennedesticourt.cravenkings.R;
 //TODO: Add castle unit
 //TODO: Add victory state
 //TODO: Add return from activity
-//TODO: Add handler stops
-//TODO: Fix slow weirdness
 //TODO: Add spells
 //TODO: Add list of assets to be loaded
 //TODO: Add camera bounds
