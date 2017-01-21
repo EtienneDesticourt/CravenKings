@@ -15,23 +15,49 @@ import etiennedesticourt.cravenkings.Combat.Engine.Game.Player;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
 
-
+//GAMEPLAY
 //TODO: Add Projectiles
 //TODO: Add miners
 //TODO: Add money
-//TODO: Set right position for units
-//TODO: Add resized frames
-//TODO: Add reverse bitmaps for other team
 //TODO: Add skill effects
 //TODO: Add castle unit
 //TODO: Add victory state
 //TODO: Add return from activity
 //TODO: Add spells
+//TODO: Add on touch damage enemies
+//TODO: Add AI
+
+//RENDER
+//TODO: Set right position for units
+//TODO: Add resized frames
+//TODO: Add reverse bitmaps for other team
 //TODO: Add list of assets to be loaded
 //TODO: Add camera bounds
 //TODO: Fix mountains size to make back more imposing
 //TODO: Resize buttons for each density
-//TODO: Add AI
+
+//SOUNDS
+//TODO: Add battle soundtrack
+//TODO: Add coin effect sound
+//TODO: Add button sound for each unit
+//TODO: Add spell sound
+//TODO: Add victory sound
+//TODO: Add loss sound
+//TODO: Add unit attack sounds
+//TODO: Add unit spawn sounds
+//TODO: Add unit death sounds
+//TODO: Add unit damage sounds
+//TODO: Add sound positioning system
+
+//POLISH
+//TODO: Add camera shakes
+//TODO: Add button feedback
+//TODO: Add damage feedback
+//TODO: Add unit lifebar (only in combat)
+//TODO: Add particle system
+//TODO: Add particles on hit
+//TODO: Add particles on spawn
+
 
 public class CombatActivity extends AppCompatActivity {
     private Renderer renderer;
