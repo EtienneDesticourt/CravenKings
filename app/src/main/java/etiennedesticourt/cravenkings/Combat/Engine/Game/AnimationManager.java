@@ -45,7 +45,7 @@ public class AnimationManager {
                 parser.getNumFramesY(),
                 parser.getNumFramesTotal(),
                 parser.isLooping(),
-                bitmap);
+                drawableId);
         animations.put(animationId, animation);
         clock.addAnimation(animation);
         return animation;
@@ -57,6 +57,10 @@ public class AnimationManager {
 
     public void stopRunningAnimations(){
         clock.stop();
+    }
+
+    public void freeAnimations() {
+        animations = new HashMap<>();
     }
 
     private static int[] calculateFrameSize(Bitmap bitmap, int numFramesX, int numFramesY){

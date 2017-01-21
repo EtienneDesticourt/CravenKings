@@ -7,6 +7,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Utils.ThreadProfiler;
+
 public class Camera implements View.OnTouchListener, Runnable{
     private int x,y;
     private float velocityX, velocityY;

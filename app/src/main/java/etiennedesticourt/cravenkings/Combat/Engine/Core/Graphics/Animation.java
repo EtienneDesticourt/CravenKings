@@ -25,11 +25,11 @@ public class Animation implements Graphics {
     private int numFrameX, numFrameY;
     private int numFrameTotal;
     private boolean looping;
-    private Bitmap frames;
+    private int frameId;
     private Rect frameRect;
 
     public Animation(int frameSizeX, int frameSizeY, int numFrameX,
-                     int numFrameY, int numFrameTotal, boolean looping, Bitmap frames) {
+                     int numFrameY, int numFrameTotal, boolean looping, int frameId) {
         this.currentFrameIndex = 0;
         this.frameSizeX = frameSizeX;
         this.frameSizeY = frameSizeY;
@@ -37,7 +37,7 @@ public class Animation implements Graphics {
         this.numFrameY = numFrameY;
         this.numFrameTotal = numFrameTotal;
         this.looping = looping;
-        this.frames = frames;
+        this.frameId = frameId;
         frameRect = new Rect(0, 0, frameSizeX, frameSizeY);
     }
 
@@ -64,6 +64,7 @@ public class Animation implements Graphics {
     public void draw(int x, int y, Canvas c) {
         Rect src = getCurrentFrameRect();
         Rect dst = new Rect(x, y, x+frameSizeX, y+frameSizeY);
+        Bitmap frames = AssetHandler.INSTANCE.get(frameId);
         c.drawBitmap(frames, src, dst, null);
     }
 

@@ -73,7 +73,7 @@ public enum AssetHandler {
     }
 
     public void freeAllAssets(){
-
+        bitmaps = new HashMap<>();
     }
 
     public static int getScreenHeightPercentage(Context context, int percentage, Orientation orientation){

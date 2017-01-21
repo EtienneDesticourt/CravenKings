@@ -13,6 +13,9 @@ import etiennedesticourt.cravenkings.Map.Allegiance;
 public class Player {
     private Spawn spawn;
     private ConcurrentHashMap<Entity, Boolean> entities;
+    private EntityMover mover;
+    private EntityAttacker attacker;
+    private EntityCleaner cleaner;
     private int miners;
     private int money;
 
@@ -24,12 +27,18 @@ public class Player {
     }
 
     public void startEntityHandlers(){
-        EntityMover mover = new EntityMover(entities, 200);
-        EntityAttacker attacker = new EntityAttacker(entities, 1000);
-        EntityCleaner cleaner  = new EntityCleaner(entities, 1000);
+        mover = new EntityMover(entities, 200);
+        attacker = new EntityAttacker(entities, 1000);
+        cleaner  = new EntityCleaner(entities, 1000);
         mover.start();
         attacker.start();
         cleaner.start();
+    }
+
+    public void stopEntityHandlers() {
+        mover.end();
+        attacker.end();
+        cleaner.end();
     }
 
     public void addEntity(Entity entity){

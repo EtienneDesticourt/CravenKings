@@ -12,16 +12,20 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Object2D;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Utils.ThreadProfiler;
 
 public class Renderer {
     private ArrayList<Background> backgrounds;
     private Set<? extends Object2D> object2Ds;
     private Camera camera;
+    private ThreadProfiler threadProfiler;
 
     public Renderer(ConcurrentHashMap<? extends Object2D, Boolean> map, Camera camera){
         object2Ds = Collections.newSetFromMap(map);
         backgrounds = new ArrayList<>();
         this.camera = camera;
+        String handlerName = "Renderer";
+        this.threadProfiler = new ThreadProfiler(handlerName);
     }
 
     public void moveCamera(){
@@ -40,6 +44,7 @@ public class Renderer {
         }*/
 
         //Draw objects
+        threadProfiler.setIterationStart();
         Iterator<? extends Object2D> it = object2Ds.iterator();
         while (it.hasNext()){
             Object2D obj = it.next();
@@ -50,5 +55,6 @@ public class Renderer {
             }
             g.draw(obj.getX(), obj.getY(), canvas, camera);
         }
+        threadProfiler.setIterationStop();
     }
 }

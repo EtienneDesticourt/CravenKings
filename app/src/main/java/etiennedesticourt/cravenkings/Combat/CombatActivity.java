@@ -64,6 +64,15 @@ public class CombatActivity extends AppCompatActivity {
         animationManager.startRunningAnimations();
     }
 
+    protected void onStop(){
+        player.stopEntityHandlers();
+        animationManager.stopRunningAnimations();
+        animationManager.freeAnimations();
+        AssetHandler.INSTANCE.freeAllAssets();
+        System.gc();
+        super.onStop();
+    }
+
     public void spawnKnight(View v){
         try {
             Entity entity = EntityFactory.genKnight(animationManager, player.getSpawn());
