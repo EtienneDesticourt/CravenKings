@@ -28,3 +28,4 @@ public class ProjectileFactory {
         new Projectile(spawn, speed, strength, range, EntityType.OTHER, allegiance, graphics);
     }
 }
+

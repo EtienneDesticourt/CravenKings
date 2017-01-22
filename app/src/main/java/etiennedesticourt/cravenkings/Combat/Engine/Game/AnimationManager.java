@@ -18,15 +18,20 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AnimationClocke
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AnimationFileParser;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AssetHandler;
 
-public class AnimationManager {
+public enum AnimationManager {
+    INSTANCE;
+
     private HashMap<Integer, Animation> animations;
     private AnimationClocker clock;
     private Resources res;
 
-    public AnimationManager(Context context){
+    private AnimationManager(){
         animations = new HashMap<>();
-        res = context.getResources();
         clock = new AnimationClocker();
+    }
+
+    public void setContext(Context context) { //TODO: Clarify unintianalized exception
+        res = context.getResources();
     }
 
     public Animation get(int animationId, int drawableId)

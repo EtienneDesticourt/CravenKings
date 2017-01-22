@@ -1,19 +1,25 @@
 package etiennedesticourt.cravenkings.Combat;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AssetHandler;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Camera;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.CombatView;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Renderer;
-import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Entity;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.AnimationManager;
-import etiennedesticourt.cravenkings.Combat.Engine.Game.EntityFactory;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Player;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
+import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 
 //GAMEPLAY
 //TODO: Add Projectiles
@@ -26,6 +32,10 @@ import etiennedesticourt.cravenkings.R;
 //TODO: Add spells
 //TODO: Add on touch damage enemies
 //TODO: Add AI
+
+//CODE QUALITY
+//TODO: Move animations to package
+//TODO: Add custom exceptions
 
 //RENDER
 //TODO: Set right position for units
@@ -57,6 +67,8 @@ import etiennedesticourt.cravenkings.R;
 //TODO: Add particle system
 //TODO: Add particles on hit
 //TODO: Add particles on spawn
+//TODO: Add particles on income
+//TODO: Clean miner icon
 
 
 public class CombatActivity extends AppCompatActivity {
@@ -75,8 +87,10 @@ public class CombatActivity extends AppCompatActivity {
         //CREATE CAMERA
         camera = new Camera(this);
 
+        ActivityCombatBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_combat);
+        binding.setPlayer(player);
+
         //START RENDERING ENTITIES
-        setContentView(R.layout.activity_combat);
         renderer = new Renderer(player.getEntities(), camera);
         CombatView combatView = (CombatView) findViewById(R.id.combatView);
         combatView.setRenderer(renderer);
@@ -84,7 +98,8 @@ public class CombatActivity extends AppCompatActivity {
 
         AssetHandler.INSTANCE.loadAllAssets(this);
 
-        animationManager = new AnimationManager(this);
+        animationManager = AnimationManager.INSTANCE;
+        animationManager.setContext(this);
         animationManager.startRunningAnimations();
     }
 
@@ -99,29 +114,42 @@ public class CombatActivity extends AppCompatActivity {
 
     public void spawnKnight(View v){
         try {
-            Entity entity = EntityFactory.genKnight(animationManager, player.getSpawn());
-            player.addEntity(entity);
-        }
-        catch (Exception e){
+            player.spawnKnight();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
         }
     }
 
     public void spawnArcher(View v){
         try {
-            Entity entity = EntityFactory.genArcher(animationManager, player.getSpawn());
-            player.addEntity(entity);
-        }
-        catch (Exception e){
+            player.spawnArcher();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
         }
     }
 
     public void spawnMage(View v){
         try {
-            Entity entity = EntityFactory.genMage(animationManager, player.getSpawn());
-            player.addEntity(entity);
+            player.spawnMage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
         }
-        catch (Exception e){
-        }
+    }
+
+    public void spawnMiner(View v){
+        player.spawnMiner();
     }
 
 

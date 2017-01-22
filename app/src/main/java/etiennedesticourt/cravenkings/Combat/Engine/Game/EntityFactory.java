@@ -1,7 +1,5 @@
 package etiennedesticourt.cravenkings.Combat.Engine.Game;
 
-import android.content.Context;
-
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -12,27 +10,17 @@ import javax.xml.parsers.ParserConfigurationException;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Entity;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityState;
+import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Archer;
+import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Knight;
+import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Mage;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
 
 public class EntityFactory {
-    private static final int KNIGHT_SPEED = 10;
-    private static final int KNIGHT_MAX_LIFE = 10;
-    private static final int KNIGHT_STRENGTH = 10;
-    private static final int KNIGHT_RANGE = 1;
 
-    private static final int ARCHER_SPEED = 1;
-    private static final int ARCHER_MAX_LIFE = 10;
-    private static final int ARCHER_STRENGTH = 10;
-    private static final int ARCHER_RANGE = 1;
-
-    private static final int MAGE_SPEED = 1;
-    private static final int MAGE_MAX_LIFE = 10;
-    private static final int MAGE_STRENGTH = 10;
-    private static final int MAGE_RANGE = 1;
-
-    public static Entity genKnight(AnimationManager manager, Spawn spawn)
+    public static Entity genKnight(Spawn spawn)
             throws ParserConfigurationException, SAXException, IOException {
+        AnimationManager manager = AnimationManager.INSTANCE;
         int movementSide = getMovementSide(spawn.getAllegiance());
 
         HashMap<EntityState, Animation> animations = new HashMap<>();
@@ -43,16 +31,12 @@ public class EntityFactory {
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
 
-        return new Entity(spawn.getSpawn(), movementSide * KNIGHT_SPEED, KNIGHT_MAX_LIFE,
-                KNIGHT_STRENGTH,
-                KNIGHT_RANGE,
-                EntityType.KNIGHT,
-                spawn.getAllegiance(),
-                animations);
+        return new Knight(spawn.getSpawn(), movementSide * Knight.SPEED, spawn.getAllegiance(), animations);
     }
 
-    public static Entity genArcher(AnimationManager manager, Spawn spawn)
+    public static Entity genArcher(Spawn spawn)
             throws ParserConfigurationException, SAXException, IOException {
+        AnimationManager manager = AnimationManager.INSTANCE;
         int movementSide = getMovementSide(spawn.getAllegiance());
 
         HashMap<EntityState, Animation> animations = new HashMap<>();
@@ -63,16 +47,12 @@ public class EntityFactory {
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
 
-        return new Entity(spawn.getSpawn(), movementSide * ARCHER_SPEED, ARCHER_MAX_LIFE,
-                ARCHER_STRENGTH,
-                ARCHER_RANGE,
-                EntityType.ARCHER,
-                spawn.getAllegiance(),
-                animations);
+        return new Archer(spawn.getSpawn(), movementSide * Archer.SPEED, spawn.getAllegiance(), animations);
     }
 
-    public static Entity genMage(AnimationManager manager, Spawn spawn)
+    public static Entity genMage(Spawn spawn)
             throws ParserConfigurationException, SAXException, IOException {
+        AnimationManager manager = AnimationManager.INSTANCE;
         int movementSide = getMovementSide(spawn.getAllegiance());
 
         HashMap<EntityState, Animation> animations = new HashMap<>();
@@ -83,12 +63,7 @@ public class EntityFactory {
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
 
-        return new Entity(spawn.getSpawn(), movementSide * MAGE_SPEED, MAGE_MAX_LIFE,
-                MAGE_STRENGTH,
-                MAGE_RANGE,
-                EntityType.MAGE,
-                spawn.getAllegiance(),
-                animations);
+        return new Mage(spawn.getSpawn(), movementSide * Mage.SPEED, spawn.getAllegiance(), animations);
     }
 
     private static int getMovementSide(Allegiance allegiance){
