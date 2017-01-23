@@ -14,9 +14,11 @@ public class Archer extends Entity{
     public static final int STRENGTH = 10;
     public static final int RANGE = 1;
     public static final int COST = 1;
+    public static final int WIDTH = 80;
+    public static final int HEIGHT = 190;
 
-    public Archer(int[] spawn, int speed, Allegiance allegiance,
+    public Archer(int[] spawn, int height, int speed, Allegiance allegiance,
                   HashMap<EntityState, ? extends Graphics> graphics) {
-        super(spawn, speed, MAX_LIFE, STRENGTH, RANGE, EntityType.ARCHER, allegiance, graphics);
+        super(spawn, speed, MAX_LIFE, STRENGTH, RANGE, WIDTH, height, EntityType.ARCHER, allegiance, graphics);
     }
 }

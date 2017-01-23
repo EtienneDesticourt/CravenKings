@@ -1,5 +1,7 @@
 package etiennedesticourt.cravenkings.Combat.Engine.Game;
 
+import android.util.Log;
+
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -31,7 +33,10 @@ public class EntityFactory {
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
 
-        return new Knight(spawn.getSpawn(), movementSide * Knight.SPEED, spawn.getAllegiance(), animations);
+        int height = walkAnim.getOffsetY() + walkAnim.getFrameSizeY();
+        int[] spawnCoords = offsetSpawnByHeight(walkAnim, spawn);
+
+        return new Knight(spawnCoords, height, movementSide * Knight.SPEED, spawn.getAllegiance(), animations);
     }
 
     public static Entity genArcher(Spawn spawn)
@@ -47,7 +52,10 @@ public class EntityFactory {
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
 
-        return new Archer(spawn.getSpawn(), movementSide * Archer.SPEED, spawn.getAllegiance(), animations);
+        int height = walkAnim.getOffsetY() + walkAnim.getFrameSizeY();
+        int[] spawnCoords = offsetSpawnByHeight(walkAnim, spawn);
+
+        return new Archer(spawnCoords, height, movementSide * Archer.SPEED, spawn.getAllegiance(), animations);
     }
 
     public static Entity genMage(Spawn spawn)
@@ -63,7 +71,10 @@ public class EntityFactory {
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
 
-        return new Mage(spawn.getSpawn(), movementSide * Mage.SPEED, spawn.getAllegiance(), animations);
+        int height = walkAnim.getOffsetY() + walkAnim.getFrameSizeY();
+        int[] spawnCoords = offsetSpawnByHeight(walkAnim, spawn);
+
+        return new Mage(spawnCoords, height, movementSide * Mage.SPEED, spawn.getAllegiance(), animations);
     }
 
     private static int getMovementSide(Allegiance allegiance){
@@ -71,5 +82,12 @@ public class EntityFactory {
             return 1;
         }
         return -1;
+    }
+
+    private static int[] offsetSpawnByHeight(Animation anim, Spawn spawn) {
+        int spawnOffsetY = anim.getOffsetY() + anim.getFrameSizeY();
+        int[] coords = spawn.getSpawn();
+        int[] newCoords = new int[]{coords[0], coords[1] - spawnOffsetY};
+        return newCoords;
     }
 }

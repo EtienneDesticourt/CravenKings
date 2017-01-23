@@ -19,6 +19,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class AnimationFileParser {
     private int numFramesTotal, numFramesX, numFramesY;
+    private int offsetX, offsetY;
     private boolean looping;
 
     private AnimationFileParser(){
@@ -35,12 +36,16 @@ public class AnimationFileParser {
         Node numFramesTotalNode = root.getElementsByTagName("num_frames_total").item(0);
         Node numFramesXNode     = root.getElementsByTagName("num_frames_x").item(0);
         Node numFramesYNode     = root.getElementsByTagName("num_frames_y").item(0);
+        Node offsetXNode     = root.getElementsByTagName("offset_x").item(0);
+        Node offsetYNode     = root.getElementsByTagName("offset_y").item(0);
         Node loopingNode        = root.getElementsByTagName("looping").item(0);
 
         //Parse node values
         int numFramesTotal = Integer.parseInt(numFramesTotalNode.getTextContent());
         int numFramesX = Integer.parseInt(numFramesXNode.getTextContent());
         int numFramesY = Integer.parseInt(numFramesYNode.getTextContent());
+        int offsetX = Integer.parseInt(offsetXNode.getTextContent());
+        int offsetY = Integer.parseInt(offsetYNode.getTextContent());
         boolean looping = Boolean.parseBoolean(loopingNode.getTextContent());
 
 
@@ -49,6 +54,8 @@ public class AnimationFileParser {
         instance.setNumFramesX(numFramesX);
         instance.setNumFramesY(numFramesY);
         instance.setLooping(looping);
+        instance.setOffsetX(offsetX);
+        instance.setOffsetY(offsetY);
 
         return instance;
     }
@@ -83,5 +90,21 @@ public class AnimationFileParser {
 
     public void setLooping(boolean looping) {
         this.looping = looping;
+    }
+
+    public int getOffsetX() {
+        return this.offsetX;
+    }
+
+    public int getOffsetY() {
+        return this.offsetY;
+    }
+
+    public void setOffsetX(int offset) {
+        this.offsetX = offset;
+    }
+
+    public void setOffsetY(int offset) {
+        this.offsetY = offset;
     }
 }

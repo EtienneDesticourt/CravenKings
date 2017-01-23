@@ -39,7 +39,7 @@ public enum AnimationManager {
         if (animations.containsKey(animationId)){
             return animations.get(animationId);
         }
-        //Get animation resources
+        //Get animation resources //TODO: put in different method
         Bitmap bitmap = AssetHandler.INSTANCE.get(drawableId);
         InputStream animationFile = res.openRawResource(animationId);
 
@@ -50,7 +50,9 @@ public enum AnimationManager {
                 parser.getNumFramesY(),
                 parser.getNumFramesTotal(),
                 parser.isLooping(),
-                drawableId);
+                drawableId,
+                parser.getOffsetX(),
+                parser.getOffsetY());
         animations.put(animationId, animation);
         clock.addAnimation(animation);
         return animation;

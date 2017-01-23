@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity{
 
         mp = MediaPlayer.create(this, R.raw.placeholder); //TODO: replace
 
-        Button continueButton = (Button) findViewById(R.id.continueButton);
+        Button continueButton = (Button) findViewById(R.id.continueButton); //TODO: Fix null ref sometimes (hdpi only)
         if (!saveFileExists()){
             continueButton.setVisibility(View.GONE);
         }

@@ -1,6 +1,8 @@
 package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class Renderer {
     private Set<? extends Object2D> object2Ds;
     private Camera camera;
     private ThreadProfiler threadProfiler;
+    private final boolean DEBUG = true;
 
     public Renderer(ConcurrentHashMap<? extends Object2D, Boolean> map, Camera camera){
         object2Ds = Collections.newSetFromMap(map);
@@ -42,6 +45,13 @@ public class Renderer {
         while (backgroundIt.hasNext()){
             backgroundIt.next().draw(canvas, camera);
         }*/
+        Paint debugPaint;
+        if (DEBUG) {
+            debugPaint = new Paint();
+            debugPaint.setColor(Color.rgb(0, 255, 0));
+            debugPaint.setStrokeWidth(2);
+            debugPaint.setStyle(Paint.Style.STROKE);
+        }
 
         //Draw objects
         threadProfiler.setIterationStart();
@@ -54,6 +64,14 @@ public class Renderer {
                 continue;
             }
             g.draw(obj.getX(), obj.getY(), canvas, camera);
+
+            if (DEBUG) {
+                canvas.drawRect(obj.getX() - camera.getX(),
+                        obj.getY() - camera.getY(),
+                        obj.getX() + obj.getWidth() - camera.getX(),
+                        obj.getY() + obj.getHeight() - camera.getY(),
+                        debugPaint);
+            }
         }
         threadProfiler.setIterationStop();
     }

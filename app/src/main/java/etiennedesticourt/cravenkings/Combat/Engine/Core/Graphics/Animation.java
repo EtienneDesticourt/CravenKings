@@ -24,21 +24,33 @@ public class Animation implements Graphics {
     private int frameSizeX, frameSizeY;
     private int numFrameX, numFrameY;
     private int numFrameTotal;
+    private int offsetX, offsetY;
     private boolean looping;
     private int frameId;
     private Rect frameRect;
 
     public Animation(int frameSizeX, int frameSizeY, int numFrameX,
-                     int numFrameY, int numFrameTotal, boolean looping, int frameId) {
+                     int numFrameY, int numFrameTotal, boolean looping, int frameId,
+                     int offsetX, int offsetY) {
         this.currentFrameIndex = 0;
         this.frameSizeX = frameSizeX;
         this.frameSizeY = frameSizeY;
         this.numFrameX = numFrameX;
         this.numFrameY = numFrameY;
         this.numFrameTotal = numFrameTotal;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
         this.looping = looping;
         this.frameId = frameId;
         frameRect = new Rect(0, 0, frameSizeX, frameSizeY);
+    }
+
+    public int getFrameSizeY() {
+        return frameSizeY;
+    }
+
+    public int getOffsetY() {
+        return offsetY;
     }
 
     public Rect getCurrentFrameRect(){
@@ -63,7 +75,7 @@ public class Animation implements Graphics {
     @Override
     public void draw(int x, int y, Canvas c) {
         Rect src = getCurrentFrameRect();
-        Rect dst = new Rect(x, y, x+frameSizeX, y+frameSizeY);
+        Rect dst = new Rect(x+offsetX, y+offsetY, x+offsetX+frameSizeX, y+offsetY+frameSizeY);
         Bitmap frames = AssetHandler.INSTANCE.get(frameId);
         c.drawBitmap(frames, src, dst, null);
     }

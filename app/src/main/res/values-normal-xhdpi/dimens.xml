@@ -61,7 +61,7 @@
     <dimen name="combat_background_backmountains_height">200dp</dimen>
     <dimen name="combat_background_frontmountains_height">150dp</dimen>
     <dimen name="combat_background_grass_height">80dp</dimen>
-    <dimen name="combat_units_height">150dp</dimen>
+    <dimen name="combat_units_height">310dp</dimen>
     <dimen name="combat_background_clouds_height">70dp</dimen>
     <dimen name="combat_background_clouds_1_top_margin">00dp</dimen>
     <dimen name="combat_background_clouds_2_top_margin">50dp</dimen>

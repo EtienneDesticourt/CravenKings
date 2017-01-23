@@ -7,5 +7,7 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Graphics;
 public interface Object2D {
     int getX();
     int getY();
+    int getWidth();
+    int getHeight();
     Graphics getGraphics();
 }

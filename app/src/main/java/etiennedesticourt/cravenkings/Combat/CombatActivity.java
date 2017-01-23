@@ -21,10 +21,14 @@ import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
 import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 
+//TOMORROW
+//TODO: Resize frames
+//TODO: Add opposite frames
+//TODO: Fix y spawn (attr) for each density
+//TODO: Add simple constant enemy spawn AI
+
 //GAMEPLAY
 //TODO: Add Projectiles
-//TODO: Add miners
-//TODO: Add money
 //TODO: Add skill effects
 //TODO: Add castle unit
 //TODO: Add victory state
@@ -32,6 +36,7 @@ import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 //TODO: Add spells
 //TODO: Add on touch damage enemies
 //TODO: Add AI
+//TODO: Add enemies
 
 //CODE QUALITY
 //TODO: Move animations to package
@@ -69,6 +74,7 @@ import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 //TODO: Add particles on spawn
 //TODO: Add particles on income
 //TODO: Clean miner icon
+//TODO: Use nicer font
 
 
 public class CombatActivity extends AppCompatActivity {

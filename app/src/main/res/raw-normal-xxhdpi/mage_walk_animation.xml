@@ -3,7 +3,7 @@
     <num_frames_total>6</num_frames_total>
     <num_frames_x>6</num_frames_x>
     <num_frames_y>1</num_frames_y>
-    <offset_x>0</offset_x>
-    <offset_y>0</offset_y>
+    <offset_x>-20</offset_x>
+    <offset_y>-40</offset_y>
     <looping>True</looping>
 </animation>

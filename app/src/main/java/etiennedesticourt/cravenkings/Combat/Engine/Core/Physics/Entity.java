@@ -8,8 +8,10 @@ import etiennedesticourt.cravenkings.Map.Allegiance;
 public class Entity implements Object2D{
     private int x;
     private int dx;
+    private int direction;
     private int rangeX;
     private final int y;
+    private int width, height;
     private int maxLife, life;
     private int strength;
     private Enum type;
@@ -21,12 +23,14 @@ public class Entity implements Object2D{
 
 
     public Entity(int[] spawn, int speedX, int maxLife, int strength, int rangeX,
+                  int width, int height,
                   Enum type,
                   Allegiance allegiance,
                   HashMap<EntityState, ? extends Graphics> graphics){
         this.x = spawn[0];
         this.y = spawn[1];
         this.dx = speedX;
+        this.direction = Integer.signum(dx);
         this.rangeX = rangeX;
         this.maxLife = maxLife;
         this.life = maxLife;
@@ -35,6 +39,8 @@ public class Entity implements Object2D{
         this.state = EntityState.MOVING;
         this.allegiance = allegiance;
         this.graphics = graphics;
+        this.width = width;
+        this.height = height;
     }
 
     public void move(){
@@ -78,7 +84,7 @@ public class Entity implements Object2D{
     }
 
     public boolean isInMyRange(Entity entity){
-        return entity.getX() <= x + rangeX;
+        return entity.getX() <= x + rangeX * direction && entity.getX() + entity.getWidth() >= x + rangeX * direction;
     }
 
     public int getStrength() {
@@ -105,6 +111,16 @@ public class Entity implements Object2D{
     @Override
     public int getY() {
         return y;
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
     }
 
     @Override

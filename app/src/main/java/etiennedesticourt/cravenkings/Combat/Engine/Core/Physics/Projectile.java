@@ -10,7 +10,7 @@ public class Projectile extends Entity{
     public Projectile(int[] spawn, int speedX, int strength, int rangeX, Enum type,
                       Allegiance allegiance,
                       HashMap<EntityState, ? extends Graphics> graphics){
-        super(spawn, speedX, 1, strength,  rangeX, type, allegiance, graphics);
+        super(spawn, speedX, 1, strength,  rangeX, 1, 1, type, allegiance, graphics);
         setCantBeAttacked();
     }
 
