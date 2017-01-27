@@ -21,6 +21,8 @@ public class AnimationFileParser {
     private int numFramesTotal, numFramesX, numFramesY;
     private int offsetX, offsetY;
     private boolean looping;
+    private boolean reversed;
+    private String drawable;
 
     private AnimationFileParser(){
     }
@@ -36,9 +38,11 @@ public class AnimationFileParser {
         Node numFramesTotalNode = root.getElementsByTagName("num_frames_total").item(0);
         Node numFramesXNode     = root.getElementsByTagName("num_frames_x").item(0);
         Node numFramesYNode     = root.getElementsByTagName("num_frames_y").item(0);
-        Node offsetXNode     = root.getElementsByTagName("offset_x").item(0);
-        Node offsetYNode     = root.getElementsByTagName("offset_y").item(0);
+        Node offsetXNode        = root.getElementsByTagName("offset_x").item(0);
+        Node offsetYNode        = root.getElementsByTagName("offset_y").item(0);
         Node loopingNode        = root.getElementsByTagName("looping").item(0);
+        Node reversedNode       = root.getElementsByTagName("reversed").item(0);
+        Node drawableNode       = root.getElementsByTagName("drawable").item(0);
 
         //Parse node values
         int numFramesTotal = Integer.parseInt(numFramesTotalNode.getTextContent());
@@ -47,6 +51,8 @@ public class AnimationFileParser {
         int offsetX = Integer.parseInt(offsetXNode.getTextContent());
         int offsetY = Integer.parseInt(offsetYNode.getTextContent());
         boolean looping = Boolean.parseBoolean(loopingNode.getTextContent());
+        boolean reversed = Boolean.parseBoolean(reversedNode.getTextContent());
+        String drawable = drawableNode.getTextContent();
 
 
         AnimationFileParser instance = new AnimationFileParser();
@@ -56,6 +62,8 @@ public class AnimationFileParser {
         instance.setLooping(looping);
         instance.setOffsetX(offsetX);
         instance.setOffsetY(offsetY);
+        instance.setReversed(reversed);
+        instance.setDrawable(drawable);
 
         return instance;
     }
@@ -106,5 +114,21 @@ public class AnimationFileParser {
 
     public void setOffsetY(int offset) {
         this.offsetY = offset;
+    }
+
+    public void setReversed(boolean reversed) {
+        this.reversed = reversed;
+    }
+
+    public boolean isReversed() {
+        return reversed;
+    }
+
+    public String getDrawable() {
+        return drawable;
+    }
+
+    public void setDrawable(String drawable) {
+        this.drawable = drawable;
     }
 }

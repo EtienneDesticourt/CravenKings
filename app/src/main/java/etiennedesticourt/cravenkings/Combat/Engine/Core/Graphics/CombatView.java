@@ -5,13 +5,16 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Renderer;
 
 public class CombatView extends View {
-    private Renderer renderer;
+    private ArrayList<Renderer> renderers;
 
     public CombatView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        renderers = new ArrayList<>();
     }
 
 
@@ -21,17 +24,16 @@ public class CombatView extends View {
 
     protected void onDraw(Canvas c){
         super.onDraw(c);
-        if (renderer != null){
-            renderer.draw(c);
+        for (int i=0; i<renderers.size(); i++) {
+            Renderer renderer = renderers.get(i);
+            if (renderer != null){
+                renderer.draw(c);
+            }
         }
         invalidate();
     }
 
-    public Renderer getRenderer() {
-        return renderer;
-    }
-
-    public void setRenderer(Renderer renderer) {
-        this.renderer = renderer;
+    public void addRenderer(Renderer renderer) {
+        renderers.add(renderer);
     }
 }

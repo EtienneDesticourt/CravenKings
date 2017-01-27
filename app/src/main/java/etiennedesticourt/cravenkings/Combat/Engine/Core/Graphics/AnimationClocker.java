@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class AnimationClocker implements Runnable{
     private ArrayList<Animation> animations;
     private boolean run;
-    private final int DELAY = 500;
+    private final int DELAY = 100;
 
     public AnimationClocker(){
         animations = new ArrayList<>();

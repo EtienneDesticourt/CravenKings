@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<animation>
+    <num_frames_total>6</num_frames_total>
+    <num_frames_x>6</num_frames_x>
+    <num_frames_y>1</num_frames_y>
+    <offset_x>-40</offset_x>
+    <offset_y>-30</offset_y>
+    <looping>True</looping>
+    <reversed>True</reversed>
+    <drawable>mage_walk_frames_enemy</drawable>
+</animation>

@@ -1,7 +1,5 @@
 package etiennedesticourt.cravenkings.Combat.Engine.Game;
 
-import android.util.Log;
-
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -26,9 +24,17 @@ public class EntityFactory {
         int movementSide = getMovementSide(spawn.getAllegiance());
 
         HashMap<EntityState, Animation> animations = new HashMap<>();
-        Animation walkAnim   = manager.get(R.raw.knight_walk_animation,   R.drawable.knight_walk_frames);
-        Animation attackAnim = manager.get(R.raw.knight_attack_animation, R.drawable.knight_attack_frames);
-        Animation deathAnim  = manager.get(R.raw.knight_death_animation,  R.drawable.knight_death_frames);
+        Animation walkAnim, attackAnim, deathAnim;
+        if (spawn.getAllegiance() == Allegiance.PLAYER) {
+            walkAnim   = manager.get(R.raw.knight_walk_animation);
+            attackAnim = manager.get(R.raw.knight_attack_animation);
+            deathAnim  = manager.get(R.raw.knight_death_animation);
+        }
+        else {
+            walkAnim   = manager.get(R.raw.knight_walk_animation_enemy);
+            attackAnim = manager.get(R.raw.knight_attack_animation_enemy);
+            deathAnim  = manager.get(R.raw.knight_death_animation_enemy);
+        }
         animations.put(EntityState.MOVING, walkAnim);
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
@@ -44,10 +50,19 @@ public class EntityFactory {
         AnimationManager manager = AnimationManager.INSTANCE;
         int movementSide = getMovementSide(spawn.getAllegiance());
 
+
         HashMap<EntityState, Animation> animations = new HashMap<>();
-        Animation walkAnim   = manager.get(R.raw.archer_walk_animation,   R.drawable.archer_walk_frames);
-        Animation attackAnim = manager.get(R.raw.archer_attack_animation, R.drawable.archer_attack_frames);
-        Animation deathAnim  = manager.get(R.raw.archer_death_animation,  R.drawable.archer_death_frames);
+        Animation walkAnim, attackAnim, deathAnim;
+        if (spawn.getAllegiance() == Allegiance.PLAYER) {
+            walkAnim   = manager.get(R.raw.archer_walk_animation);
+            attackAnim = manager.get(R.raw.archer_attack_animation);
+            deathAnim  = manager.get(R.raw.archer_death_animation);
+        }
+        else {
+            walkAnim   = manager.get(R.raw.archer_walk_animation_enemy);
+            attackAnim = manager.get(R.raw.archer_attack_animation_enemy);
+            deathAnim  = manager.get(R.raw.archer_death_animation_enemy);
+        }
         animations.put(EntityState.MOVING, walkAnim);
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);
@@ -64,9 +79,17 @@ public class EntityFactory {
         int movementSide = getMovementSide(spawn.getAllegiance());
 
         HashMap<EntityState, Animation> animations = new HashMap<>();
-        Animation walkAnim   = manager.get(R.raw.mage_walk_animation,   R.drawable.mage_walk_frames);
-        Animation attackAnim = manager.get(R.raw.mage_attack_animation, R.drawable.mage_attack_frames);
-        Animation deathAnim  = manager.get(R.raw.mage_death_animation,  R.drawable.mage_death_frames);
+        Animation walkAnim, attackAnim, deathAnim;
+        if (spawn.getAllegiance() == Allegiance.PLAYER) {
+            walkAnim   = manager.get(R.raw.mage_walk_animation);
+            attackAnim = manager.get(R.raw.mage_attack_animation);
+            deathAnim  = manager.get(R.raw.mage_death_animation);
+        }
+        else {
+            walkAnim   = manager.get(R.raw.mage_walk_animation_enemy);
+            attackAnim = manager.get(R.raw.mage_attack_animation_enemy);
+            deathAnim  = manager.get(R.raw.mage_death_animation_enemy);
+        }
         animations.put(EntityState.MOVING, walkAnim);
         animations.put(EntityState.ATTACKING, attackAnim);
         animations.put(EntityState.DEAD, deathAnim);

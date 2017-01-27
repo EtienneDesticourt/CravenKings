@@ -44,6 +44,15 @@ public enum AssetHandler {
         loadAsset(context, R.drawable.mage_walk_frames, options);
         loadAsset(context, R.drawable.mage_attack_frames, options);
         loadAsset(context, R.drawable.mage_death_frames, options);
+        loadAsset(context, R.drawable.knight_walk_frames_enemy, options);
+        loadAsset(context, R.drawable.knight_attack_frames_enemy, options);
+        loadAsset(context, R.drawable.knight_death_frames_enemy, options);
+        loadAsset(context, R.drawable.archer_walk_frames_enemy, options);
+        loadAsset(context, R.drawable.archer_attack_frames_enemy, options);
+        loadAsset(context, R.drawable.archer_death_frames_enemy, options);
+        loadAsset(context, R.drawable.mage_walk_frames_enemy, options);
+        loadAsset(context, R.drawable.mage_attack_frames_enemy, options);
+        loadAsset(context, R.drawable.mage_death_frames_enemy, options);
     }
 
     public void loadAsset(Context context, int id, BitmapFactory.Options options){

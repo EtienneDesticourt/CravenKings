@@ -6,4 +6,6 @@
     <offset_x>-25</offset_x>
     <offset_y>0</offset_y>
     <looping>True</looping>
+    <reversed>False</reversed>
+    <drawable>knight_walk_frames</drawable>
 </animation>

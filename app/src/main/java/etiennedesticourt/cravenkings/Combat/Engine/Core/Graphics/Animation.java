@@ -1,23 +1,8 @@
 package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-
-import java.io.File;
-import java.io.IOException;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 public class Animation implements Graphics {
     private int currentFrameIndex;
@@ -28,11 +13,13 @@ public class Animation implements Graphics {
     private boolean looping;
     private int frameId;
     private Rect frameRect;
+    private boolean reversed;
 
     public Animation(int frameSizeX, int frameSizeY, int numFrameX,
-                     int numFrameY, int numFrameTotal, boolean looping, int frameId,
+                     int numFrameY, int numFrameTotal,
+                     boolean looping, boolean reversed,
+                     int frameId,
                      int offsetX, int offsetY) {
-        this.currentFrameIndex = 0;
         this.frameSizeX = frameSizeX;
         this.frameSizeY = frameSizeY;
         this.numFrameX = numFrameX;
@@ -41,6 +28,13 @@ public class Animation implements Graphics {
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.looping = looping;
+        this.reversed = reversed;
+        if (reversed) {
+            this.currentFrameIndex = numFrameTotal;
+        }
+        else {
+            this.currentFrameIndex = 0;
+        }
         this.frameId = frameId;
         frameRect = new Rect(0, 0, frameSizeX, frameSizeY);
     }
@@ -61,13 +55,34 @@ public class Animation implements Graphics {
     }
 
     public void next(){
+        if (reversed) {
+            backward();
+        }
+        else {
+            forward();
+        }
+    }
+
+    public void forward(){
         currentFrameIndex += 1;
         if (currentFrameIndex >= numFrameTotal){
             if (looping){
                 currentFrameIndex = 0;
             }
             else{
-                currentFrameIndex = numFrameTotal;
+                currentFrameIndex = numFrameTotal-1;
+            }
+        }
+    }
+
+    public void backward() {
+        currentFrameIndex -= 1;
+        if (currentFrameIndex < 0){
+            if (looping){
+                currentFrameIndex = numFrameTotal-1;
+            }
+            else{
+                currentFrameIndex = 0;
             }
         }
     }

@@ -6,4 +6,6 @@
     <offset_x>0</offset_x>
     <offset_y>0</offset_y>
     <looping>True</looping>
+    <reversed>False</reversed>
+    <drawable>knight_death_frames</drawable>
 </animation>

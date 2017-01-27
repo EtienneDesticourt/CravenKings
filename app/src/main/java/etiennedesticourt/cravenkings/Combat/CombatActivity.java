@@ -15,17 +15,12 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AssetHandler;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Camera;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.CombatView;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Renderer;
+import etiennedesticourt.cravenkings.Combat.Engine.Game.AI.Spawner;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.AnimationManager;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Player;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
 import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
-
-//TOMORROW
-//TODO: Resize frames
-//TODO: Add opposite frames
-//TODO: Fix y spawn (attr) for each density
-//TODO: Add simple constant enemy spawn AI
 
 //GAMEPLAY
 //TODO: Add Projectiles
@@ -43,8 +38,6 @@ import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 //TODO: Add custom exceptions
 
 //RENDER
-//TODO: Set right position for units
-//TODO: Add resized frames
 //TODO: Add reverse bitmaps for other team
 //TODO: Add list of assets to be loaded
 //TODO: Add camera bounds
@@ -78,10 +71,10 @@ import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 
 
 public class CombatActivity extends AppCompatActivity {
-    private Renderer renderer;
     private AnimationManager animationManager;
     private Camera camera;
     private Player player;
+    private Player computer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +82,8 @@ public class CombatActivity extends AppCompatActivity {
 
         player = new Player(this, Allegiance.PLAYER);
         player.startEntityHandlers();
+        computer = new Player(this, Allegiance.COMPUTER);
+        computer.startEntityHandlers();
 
         //CREATE CAMERA
         camera = new Camera(this);
@@ -97,9 +92,11 @@ public class CombatActivity extends AppCompatActivity {
         binding.setPlayer(player);
 
         //START RENDERING ENTITIES
-        renderer = new Renderer(player.getEntities(), camera);
+        Renderer playerRenderer = new Renderer(player.getEntities(), camera);
+        Renderer computerRenderer = new Renderer(computer.getEntities(), camera);
         CombatView combatView = (CombatView) findViewById(R.id.combatView);
-        combatView.setRenderer(renderer);
+        combatView.addRenderer(playerRenderer);
+        combatView.addRenderer(computerRenderer);
         combatView.setOnTouchListener(camera);
 
         AssetHandler.INSTANCE.loadAllAssets(this);
@@ -107,10 +104,14 @@ public class CombatActivity extends AppCompatActivity {
         animationManager = AnimationManager.INSTANCE;
         animationManager.setContext(this);
         animationManager.startRunningAnimations();
+
+        Spawner spawner = new Spawner(computer);
+        spawner.start();
     }
 
     protected void onStop(){
         player.stopEntityHandlers();
+        computer.stopEntityHandlers();
         animationManager.stopRunningAnimations();
         animationManager.freeAnimations();
         AssetHandler.INSTANCE.freeAllAssets();
@@ -118,7 +119,7 @@ public class CombatActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public void spawnKnight(View v){
+    public void spawnKnight(View v){ //TODO: Handle exceptions better
         try {
             player.spawnKnight();
         } catch (IOException e) {
