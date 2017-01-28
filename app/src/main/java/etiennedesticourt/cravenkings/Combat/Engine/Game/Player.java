@@ -18,6 +18,7 @@ import etiennedesticourt.cravenkings.BR;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Entity;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityAttacker;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityCleaner;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityManager;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityMover;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Archer;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Knight;
@@ -28,45 +29,25 @@ import etiennedesticourt.cravenkings.Map.Allegiance;
 public class Player extends BaseObservable {
     private final int MINER_COST = 10; //TODO: Find more appropriate spot
     private Spawn spawn;
-    private ConcurrentHashMap<Entity, Boolean> entities;
-    private EntityMover mover;
-    private EntityAttacker attacker;
-    private EntityCleaner cleaner;
     private int miners;
     private int money;
     private Timer moneyTimer;
+    private EntityManager entityManager;
 
-    public Player(Context context, Allegiance allegiance){
-        entities = new ConcurrentHashMap<>();
+    public Player(Context context, EntityManager entityManager, Allegiance allegiance){
         spawn = new Spawn(context, allegiance);
         money = 300;
         miners = 0;
         moneyTimer = new Timer();
+        this.entityManager = entityManager;
     }
 
-    public void startEntityHandlers(){
-        mover = new EntityMover(entities, 200);
-        attacker = new EntityAttacker(entities, 1000);
-        cleaner  = new EntityCleaner(entities, 1000);
-        mover.start();
-        attacker.start();
-        cleaner.start();
+    public void startIncome(){
         moneyTimer.scheduleAtFixedRate(new UpdateMoneyTask(), 0, Miner.INCOME_INTERVAL_MILLISECONDS);
     }
 
-    public void stopEntityHandlers() {
-        mover.end();
-        attacker.end();
-        cleaner.end();
+    public void stopIncome() {
         moneyTimer.cancel();
-    }
-
-    public void addEntity(Entity entity){
-        entities.put(entity, true);
-    }
-
-    public ConcurrentHashMap<Entity, Boolean> getEntities(){
-        return entities;
     }
 
     public Spawn getSpawn(){
@@ -76,7 +57,7 @@ public class Player extends BaseObservable {
     public boolean spawnMage() throws IOException, SAXException, ParserConfigurationException {
         if (money >= Mage.COST) {
             Entity mage = EntityFactory.genMage(spawn);
-            addEntity(mage);
+            entityManager.addEntity(mage);
             decreaseMoneyBy(Mage.COST);
             return true;
         }
@@ -86,7 +67,7 @@ public class Player extends BaseObservable {
     public boolean spawnArcher() throws IOException, SAXException, ParserConfigurationException {
         if (money >= Archer.COST) {
             Entity archer = EntityFactory.genArcher(spawn);
-            addEntity(archer);
+            entityManager.addEntity(archer);
             decreaseMoneyBy(Archer.COST);
             return true;
         }
@@ -96,7 +77,7 @@ public class Player extends BaseObservable {
     public boolean spawnKnight() throws IOException, SAXException, ParserConfigurationException {
         if (money >= Knight.COST) {
             Entity knight = EntityFactory.genKnight(spawn);
-            addEntity(knight);
+            entityManager.addEntity(knight);
             decreaseMoneyBy(Knight.COST);
             return true;
         }
