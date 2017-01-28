@@ -1,4 +1,4 @@
-package etiennedesticourt.cravenkings.Combat.Engine.Game;
+package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,9 +12,6 @@ import java.util.HashMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation;
-import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AnimationClocker;
-import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AnimationFileParser;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AssetHandler;
 
 public enum AnimationManager {

@@ -1,4 +1,4 @@
-package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics;
+package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation;
 
 import java.util.ArrayList;
 

@@ -11,12 +11,12 @@ import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation.AnimationManager;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AssetHandler;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Camera;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.CombatView;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Renderer;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.AI.Spawner;
-import etiennedesticourt.cravenkings.Combat.Engine.Game.AnimationManager;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Player;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;

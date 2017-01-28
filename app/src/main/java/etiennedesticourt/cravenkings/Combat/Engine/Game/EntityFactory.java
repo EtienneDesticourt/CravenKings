@@ -7,7 +7,8 @@ import java.util.HashMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation.Animation;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation.AnimationManager;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Entity;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityState;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Archer;

@@ -1,8 +1,12 @@
-package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics;
+package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.AssetHandler;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Camera;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Graphics;
 
 public class Animation implements Graphics {
     private int currentFrameIndex;
