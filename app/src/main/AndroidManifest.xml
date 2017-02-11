@@ -22,8 +22,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Map.MapActivity"
-            android:label="@string/title_activity_map"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_map" />
         <activity android:name=".Map.SkillsActivity" />
         <activity android:name=".Combat.CombatActivity"></activity>
     </application>
