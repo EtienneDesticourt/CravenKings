@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class EntityMover extends Object2DHandler {
 
-    public EntityMover(ConcurrentHashMap<Entity, Boolean> entities, int delay) {
+    public EntityMover(ConcurrentHashMap<Integer, Entity> entities, int delay) {
         super(entities, delay, "Entity Mover");
     }
 

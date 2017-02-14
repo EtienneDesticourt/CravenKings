@@ -6,6 +6,8 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Graphics;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 
 public class Entity implements Object2D{
+    private static int count = 0;
+    private int id;
     private int x;
     private int dx;
     private int direction;
@@ -41,6 +43,8 @@ public class Entity implements Object2D{
         this.graphics = graphics;
         this.width = width;
         this.height = height;
+        id = count;
+        count += 1;
     }
 
     public void move(){
@@ -103,6 +107,8 @@ public class Entity implements Object2D{
         return life;
     }
 
+    public int getId() { return id; }
+
     @Override
     public int getX(){
         return x;
@@ -126,6 +132,10 @@ public class Entity implements Object2D{
     @Override
     public Graphics getGraphics() {
         return graphics.get(state);
+    }
+
+    public String getIdentification() {
+        return String.format("%s#%d(%s) of %s", type.toString(), id, state.toString(), allegiance.toString());
     }
 
     public void die(){

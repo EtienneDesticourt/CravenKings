@@ -4,7 +4,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class EntityCleaner extends Object2DHandler {
 
-    public EntityCleaner(ConcurrentHashMap<Entity, Boolean> map, int delay) {
+    public EntityCleaner(ConcurrentHashMap<Integer, Entity> map, int delay) {
         super(map, delay, "Entity Cleaner");
     }
 
@@ -12,7 +12,7 @@ public class EntityCleaner extends Object2DHandler {
     protected void act(Object2D object) {
         Entity entity = (Entity) object;
         if (entity.isDead()){
-            getObjects().remove(entity);
+            getObjects().remove(entity.getId());
         }
     }
 }

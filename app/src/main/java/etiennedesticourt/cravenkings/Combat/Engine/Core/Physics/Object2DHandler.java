@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,14 +12,14 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Utils.ThreadProfiler;
 
 public abstract class Object2DHandler extends Thread{
     private final String DEBUG_TAG = "ENTITY_HANDLER";
-    private Set<? extends Object2D> objects;
+    private ConcurrentHashMap<Integer, ? extends Object2D> objects;
     private final int delay;
     private boolean stop = false;
     private final String handlerName;
     private ThreadProfiler threadProfiler;
 
-    public Object2DHandler(ConcurrentHashMap<Entity, Boolean> map, int delay, String handlerName){
-        this.objects = Collections.newSetFromMap(map);
+    public Object2DHandler(ConcurrentHashMap<Integer, ? extends Object2D> map, int delay, String handlerName){
+        this.objects = map;
         this.delay = delay;
         this.handlerName = handlerName;
         this.threadProfiler = new ThreadProfiler(handlerName);
@@ -28,9 +29,9 @@ public abstract class Object2DHandler extends Thread{
         Log.d(DEBUG_TAG, "Thread for " + handlerName + " started.");
         while (!stop){
             threadProfiler.setIterationStart();
-            Iterator<? extends Object2D> it = objects.iterator();
-            while (it.hasNext()){
-                act(it.next());
+            for (Map.Entry<Integer, ? extends Object2D> entry : objects.entrySet()) {
+                Object2D o = entry.getValue();
+                act(o);
             }
 
             try {
@@ -50,7 +51,7 @@ public abstract class Object2DHandler extends Thread{
         stop = true;
     }
 
-    public Set<? extends Object2D> getObjects(){
+    public ConcurrentHashMap<Integer, ? extends Object2D> getObjects(){
         return objects;
     }
 }

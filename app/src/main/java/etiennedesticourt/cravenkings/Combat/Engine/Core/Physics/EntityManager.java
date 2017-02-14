@@ -3,13 +3,13 @@ package etiennedesticourt.cravenkings.Combat.Engine.Core.Physics;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class EntityManager {
-    private ConcurrentHashMap<Entity, Boolean> entities;
+    private ConcurrentHashMap<Integer, Entity> entities;
     private EntityMover mover;
     private EntityAttacker attacker;
     private EntityCleaner cleaner;
 
     public EntityManager() {
-        entities = new ConcurrentHashMap<>();
+        entities = new ConcurrentHashMap<>(4, 0.9f, 1);
     }
 
     public void startEntityHandlers(){
@@ -18,7 +18,7 @@ public class EntityManager {
         cleaner  = new EntityCleaner(entities, 1000);
         mover.start();
         attacker.start();
-        cleaner.start();
+        //cleaner.start();
     }
 
     public void stopEntityHandlers() {
@@ -28,10 +28,10 @@ public class EntityManager {
     }
 
     public void addEntity(Entity entity){
-        entities.put(entity, true);
+        entities.put(entity.getId(), entity);
     }
 
-    public ConcurrentHashMap<Entity, Boolean> getEntities(){
+    public ConcurrentHashMap<Integer, Entity> getEntities(){
         return entities;
     }
 }

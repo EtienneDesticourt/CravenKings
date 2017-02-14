@@ -3,6 +3,7 @@ package etiennedesticourt.cravenkings.Combat;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import org.xml.sax.SAXException;
@@ -24,7 +25,9 @@ import etiennedesticourt.cravenkings.R;
 import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 
 //GAMEPLAY
-//TODO: Fix frames
+//TODO: Fix enemy frames
+//TODO: Fix framerate issue
+//TODO: Fix attacker logic
 //TODO: Add Projectiles
 //TODO: Add skill effects
 //TODO: Add castle unit
@@ -109,7 +112,9 @@ public class CombatActivity extends AppCompatActivity {
         animationManager.startRunningAnimations();
 
         spawner = new Spawner(computer);
-        spawner.start();
+        //spawner.start();
+
+        Log.d("FUCKING HUUUUU", String.valueOf(getResources().getDisplayMetrics().density));
     }
 
     protected void onStop(){
@@ -125,6 +130,7 @@ public class CombatActivity extends AppCompatActivity {
     public void spawnKnight(View v){ //TODO: Handle exceptions better
         try {
             player.spawnKnight();
+            computer.spawnKnight();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
@@ -137,6 +143,7 @@ public class CombatActivity extends AppCompatActivity {
     public void spawnArcher(View v){
         try {
             player.spawnArcher();
+            computer.spawnArcher();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
@@ -149,6 +156,7 @@ public class CombatActivity extends AppCompatActivity {
     public void spawnMage(View v){
         try {
             player.spawnMage();
+            computer.spawnMage();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {

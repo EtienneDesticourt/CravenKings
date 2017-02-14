@@ -3,13 +3,11 @@ package etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,13 +16,13 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Utils.ThreadProfiler;
 
 public class Renderer {
     private ArrayList<Background> backgrounds;
-    private Set<? extends Object2D> object2Ds;
+    private ConcurrentHashMap<Integer, ? extends Object2D> object2Ds;
     private Camera camera;
     private ThreadProfiler threadProfiler;
     private final boolean DEBUG = true;
 
-    public Renderer(ConcurrentHashMap<? extends Object2D, Boolean> map, Camera camera){
-        object2Ds = Collections.newSetFromMap(map);
+    public Renderer(ConcurrentHashMap<Integer, ? extends Object2D> map, Camera camera){
+        object2Ds = map;
         backgrounds = new ArrayList<>();
         this.camera = camera;
         String handlerName = "Renderer";
@@ -55,9 +53,8 @@ public class Renderer {
 
         //Draw objects
         threadProfiler.setIterationStart();
-        Iterator<? extends Object2D> it = object2Ds.iterator();
-        while (it.hasNext()){
-            Object2D obj = it.next();
+        for (Map.Entry<Integer, ? extends Object2D> entry : object2Ds.entrySet()) {
+            Object2D obj = entry.getValue();
 
             Graphics g = obj.getGraphics();
             if (g == null){
