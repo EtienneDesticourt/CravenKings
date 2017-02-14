@@ -88,7 +88,12 @@ public class Entity implements Object2D{
     }
 
     public boolean isInMyRange(Entity entity){
-        return entity.getX() <= x + rangeX * direction && entity.getX() + entity.getWidth() >= x + rangeX * direction;
+        if (direction == 1){
+            return entity.getX() <= x + rangeX && entity.getX() >= x + width;
+        }
+        else {
+            return entity.getX() >= x - width - rangeX && entity.getX() + width <= x ;
+        }
     }
 
     public int getStrength() {
