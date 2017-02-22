@@ -4,5 +4,6 @@ public enum EntityType {
     KNIGHT,
     ARCHER,
     MAGE,
+    CASTLE,
     OTHER
 }

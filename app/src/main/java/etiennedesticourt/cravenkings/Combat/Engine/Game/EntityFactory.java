@@ -9,15 +9,27 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation.Animation;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Animation.AnimationManager;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.SimpleGraphics;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Entity;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityState;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Archer;
+import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Castle;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Knight;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Units.Mage;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
 
 public class EntityFactory {
+
+    public static Entity genCastle(Spawn spawn) {
+        HashMap<EntityState, SimpleGraphics> graphics = new HashMap<>();
+        SimpleGraphics idleGraphics = new SimpleGraphics(R.drawable.castle);
+        SimpleGraphics damagedGraphics = new SimpleGraphics(R.drawable.castle_broken);
+        graphics.put(EntityState.IDLE, idleGraphics);
+        graphics.put(EntityState.DAMAGED, damagedGraphics);
+
+        return new Castle(spawn.getSpawn(), Castle.HEIGHT, 0, spawn.getAllegiance(), graphics);
+    }
 
     public static Entity genKnight(Spawn spawn)
             throws ParserConfigurationException, SAXException, IOException {

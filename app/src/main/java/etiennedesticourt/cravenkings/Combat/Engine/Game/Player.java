@@ -40,6 +40,7 @@ public class Player extends BaseObservable {
         miners = 0;
         moneyTimer = new Timer();
         this.entityManager = entityManager;
+        spawnCastle();
     }
 
     public void startIncome(){
@@ -52,6 +53,11 @@ public class Player extends BaseObservable {
 
     public Spawn getSpawn(){
         return spawn;
+    }
+
+    public void spawnCastle() {
+        Entity castle = EntityFactory.genCastle(spawn);
+        entityManager.addEntity(castle);
     }
 
     public boolean spawnMage() throws IOException, SAXException, ParserConfigurationException {

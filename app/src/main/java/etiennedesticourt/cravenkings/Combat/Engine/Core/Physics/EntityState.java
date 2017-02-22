@@ -4,5 +4,6 @@ public enum EntityState {
     MOVING,
     ATTACKING,
     IDLE,
+    DAMAGED,
     DEAD
 }
