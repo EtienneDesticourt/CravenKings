@@ -18,16 +18,16 @@ import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Camera;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.CombatView;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Graphics.Renderer;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.EntityManager;
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Sounds.SoundSystem;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.AI.Spawner;
 import etiennedesticourt.cravenkings.Combat.Engine.Game.Player;
+import etiennedesticourt.cravenkings.Combat.Engine.Game.SoundLoader;
 import etiennedesticourt.cravenkings.Map.Allegiance;
 import etiennedesticourt.cravenkings.R;
 import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 
 //GAMEPLAY
 //TODO: Fix enemy frames
-//TODO: Fix framerate issue
-//TODO: Fix attacker logic
 //TODO: Add Projectiles
 //TODO: Add skill effects
 //TODO: Add castle unit
@@ -60,16 +60,19 @@ import etiennedesticourt.cravenkings.databinding.ActivityCombatBinding;
 //TODO: Add unit spawn sounds
 //TODO: Add unit death sounds
 //TODO: Add unit damage sounds
+//TODO: Add despawn sound
 //TODO: Add sound positioning system
 
 //POLISH
 //TODO: Add camera shakes
 //TODO: Add button feedback
 //TODO: Add damage feedback
+//TODO: Add button timeout effect
 //TODO: Add unit lifebar (only in combat)
 //TODO: Add particle system
 //TODO: Add particles on hit
 //TODO: Add particles on spawn
+//TODO: Add particle on despawn
 //TODO: Add particles on income
 //TODO: Clean miner icon
 //TODO: Use nicer font
@@ -82,6 +85,7 @@ public class CombatActivity extends AppCompatActivity {
     private Player player;
     private Player computer;
     private Spawner spawner;
+    private SoundSystem soundSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,9 @@ public class CombatActivity extends AppCompatActivity {
 
         //CREATE CAMERA
         camera = new Camera(this);
+
+        soundSystem = new SoundSystem(camera, 500);
+        SoundLoader.loadAllSounds(soundSystem, this);
 
         ActivityCombatBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_combat);
         binding.setPlayer(player);
@@ -110,6 +117,7 @@ public class CombatActivity extends AppCompatActivity {
         animationManager = AnimationManager.INSTANCE;
         animationManager.setContext(this);
         animationManager.startRunningAnimations();
+
 
         spawner = new Spawner(computer);
         //spawner.start();
@@ -129,6 +137,7 @@ public class CombatActivity extends AppCompatActivity {
 
     public void spawnKnight(View v){ //TODO: Handle exceptions better
         try {
+
             player.spawnKnight();
             computer.spawnKnight();
         } catch (IOException e) {

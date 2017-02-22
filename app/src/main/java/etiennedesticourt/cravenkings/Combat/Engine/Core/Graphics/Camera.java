@@ -7,9 +7,10 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import etiennedesticourt.cravenkings.Combat.Engine.Core.Physics.Object2D;
 import etiennedesticourt.cravenkings.Combat.Engine.Core.Utils.ThreadProfiler;
 
-public class Camera implements View.OnTouchListener, Runnable{
+public class Camera implements View.OnTouchListener, Runnable, Object2D{
     private int x,y;
     private float velocityX, velocityY;
     private double friction;
@@ -46,7 +47,7 @@ public class Camera implements View.OnTouchListener, Runnable{
         if (running){
             stopFling();
         }
-        this.velocityX = velocityX / 10;
+        this.velocityX = velocityX / 50;
         new Thread(this).start();
     }
 
@@ -105,5 +106,20 @@ public class Camera implements View.OnTouchListener, Runnable{
 
     public int getY(){
         return y;
+    }
+
+    @Override
+    public int getWidth() {
+        return 0;
+    }
+
+    @Override
+    public int getHeight() {
+        return 0;
+    }
+
+    @Override
+    public Graphics getGraphics() {
+        return null;
     }
 }
